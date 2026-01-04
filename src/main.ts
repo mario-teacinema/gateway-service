@@ -1,6 +1,6 @@
 import { NestFactory } from "@nestjs/core";
-import { AppModule } from "./core/app.module";
-import { Logger } from "@nestjs/common";
+import { AppModule, getCorsConfig, getValidationPipeConfig } from "./core";
+import { Logger, ValidationPipe } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
@@ -10,10 +10,9 @@ async function bootstrap() {
   const config = app.get(ConfigService);
   const logger = new Logger("Bootstrap");
 
-  app.enableCors({
-    origin: config.getOrThrow<string>("HTTP_CORS").split(","),
-    credentials: true,
-  });
+  app.useGlobalPipes(new ValidationPipe(getValidationPipeConfig()));
+
+  app.enableCors(getCorsConfig(config));
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle("TeaCinema API")
