@@ -7,4 +7,11 @@ export class AppService {
       message: "Welcome",
     };
   }
+
+  public health(): { status: string; timestamp: string } {
+    return {
+      status: "ok",
+      timestamp: new Date().toDateString(),
+    };
+  }
 }
