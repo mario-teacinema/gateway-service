@@ -34,4 +34,4 @@ async function bootstrap() {
   logger.log(`🚀 Gateway started: ${host}`);
   logger.log(`📚 Swagger: ${host}/docs`);
 }
-bootstrap();
+bootstrap().then().catch(console.error);
