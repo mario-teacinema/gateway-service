@@ -28,9 +28,12 @@
     "yarn:audit:fix": "yarn up --recursive"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.14.3",
+    "@mario-teacinema/contracts": "^1.0.2",
     "@nestjs/common": "11.1.11",
     "@nestjs/config": "4.0.2",
     "@nestjs/core": "11.1.11",
+    "@nestjs/microservices": "^11.1.11",
     "@nestjs/platform-express": "11.1.11",
     "@nestjs/swagger": "11.2.3",
     "class-transformer": "0.5.1",
