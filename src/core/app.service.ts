@@ -11,7 +11,7 @@ export class AppService {
   public health(): { status: string; timestamp: string } {
     return {
       status: "ok",
-      timestamp: new Date().toDateString(),
+      timestamp: new Date().toISOString(),
     };
   }
 }
