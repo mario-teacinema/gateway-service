@@ -1,0 +1,10 @@
+export enum RpCStatus {
+  OK = 0,
+  CANCELED = 1,
+  UNKNOWN = 2, // 500
+  INVALID_ARGUMENTS = 3,
+  DEADLINE_EXCEEDED = 4,
+  NOT_FOUND = 5,
+  ALREADY_EXISTS = 6,
+  PERMISSION_DENIED = 7,
+}
