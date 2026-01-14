@@ -3,6 +3,7 @@ import { Inject, Injectable, OnModuleInit } from "@nestjs/common";
 import { AuthServiceClient } from "@mario-teacinema/contracts/gen/auth";
 import type { ClientGrpc } from "@nestjs/microservices";
 import { SendOtpRequest } from "./dto";
+import { VerifyOtpRequest } from "./dto/requests/verify-otp.request";
 
 @Injectable()
 export class AuthClientGrpc implements OnModuleInit {
@@ -18,5 +19,9 @@ export class AuthClientGrpc implements OnModuleInit {
 
   public sendOtp(request: SendOtpRequest) {
     return this.authService.sendOtp(request);
+  }
+
+  public verifyOtp(request: VerifyOtpRequest) {
+    return this.authService.verifyOtp(request);
   }
 }
