@@ -572,7 +572,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@grpc/grpc-js@npm:^1.14.3":
+"@grpc/grpc-js@npm:1.14.3":
   version: 1.14.3
   resolution: "@grpc/grpc-js@npm:1.14.3"
   dependencies:
@@ -1250,20 +1250,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mario-teacinema/common@npm:^1.0.4":
+"@mario-teacinema/common@npm:1.0.4":
   version: 1.0.4
   resolution: "@mario-teacinema/common@npm:1.0.4"
   checksum: 10c0/f301eeab91621549d2c861bdfa5f5e5238f285ff87443e343c213236246c8f3d971757887140f5c1fa3b28d9a7df2fd5078e8d0d273b2f5954f4f62db239419a
   languageName: node
   linkType: hard
 
-"@mario-teacinema/contracts@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "@mario-teacinema/contracts@npm:1.0.3"
+"@mario-teacinema/contracts@npm:1.0.7":
+  version: 1.0.7
+  resolution: "@mario-teacinema/contracts@npm:1.0.7"
   dependencies:
-    "@nestjs/microservices": "npm:^11.1.11"
-    rxjs: "npm:^7.8.2"
-  checksum: 10c0/e36b1bdb25e91cb228f18da494b16341a9f03fdbdbe87f55b7f74a490f8f8bed14e039a446a4480c75a02c1e756af5008dfa83507e9a54285c17f5b985368f81
+    "@nestjs/microservices": "npm:11.1.11"
+    rxjs: "npm:7.8.2"
+  checksum: 10c0/146f156a31a3f601b98e512a241d3408eb82a98a5d04aed1e0497cacd878fdb90ce11a5ab0a761f2b8cdd3effa8737a9202729fd0d4b0848a93d4a6da8c4b1ff
   languageName: node
   linkType: hard
 
@@ -1582,7 +1582,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/microservices@npm:^11.1.11":
+"@nestjs/microservices@npm:11.1.11":
   version: 11.1.11
   resolution: "@nestjs/microservices@npm:11.1.11"
   dependencies:
@@ -2286,7 +2286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^29.5.14":
+"@types/jest@npm:29.5.14":
   version: 29.5.14
   resolution: "@types/jest@npm:29.5.14"
   dependencies:
@@ -2319,7 +2319,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.19.3":
+"@types/node@npm:22.19.3":
   version: 22.19.3
   resolution: "@types/node@npm:22.19.3"
   dependencies:
@@ -4740,15 +4740,15 @@ __metadata:
   dependencies:
     "@eslint/eslintrc": "npm:3.3.3"
     "@eslint/js": "npm:9.39.2"
-    "@grpc/grpc-js": "npm:^1.14.3"
-    "@mario-teacinema/common": "npm:^1.0.4"
-    "@mario-teacinema/contracts": "npm:^1.0.3"
+    "@grpc/grpc-js": "npm:1.14.3"
+    "@mario-teacinema/common": "npm:1.0.4"
+    "@mario-teacinema/contracts": "npm:1.0.7"
     "@mario-teacinema/core": "npm:1.0.3"
     "@nestjs/cli": "npm:11.0.14"
     "@nestjs/common": "npm:11.1.11"
     "@nestjs/config": "npm:4.0.2"
     "@nestjs/core": "npm:11.1.11"
-    "@nestjs/microservices": "npm:^11.1.11"
+    "@nestjs/microservices": "npm:11.1.11"
     "@nestjs/platform-express": "npm:11.1.11"
     "@nestjs/schematics": "npm:11.0.9"
     "@nestjs/swagger": "npm:11.2.3"
@@ -4756,16 +4756,16 @@ __metadata:
     "@swc/cli": "npm:0.7.9"
     "@swc/core": "npm:1.15.8"
     "@types/express": "npm:5.0.6"
-    "@types/jest": "npm:^29.5.14"
-    "@types/node": "npm:^22.19.3"
+    "@types/jest": "npm:29.5.14"
+    "@types/node": "npm:22.19.3"
     "@types/supertest": "npm:6.0.3"
     class-transformer: "npm:0.5.1"
     class-validator: "npm:0.14.3"
     eslint: "npm:9.39.2"
     eslint-config-prettier: "npm:10.1.8"
     eslint-plugin-prettier: "npm:5.5.4"
-    globals: "npm:^16.5.0"
-    jest: "npm:^29.7.0"
+    globals: "npm:16.5.0"
+    jest: "npm:29.7.0"
     npm-check-updates: "npm:19.2.1"
     prettier: "npm:3.7.4"
     reflect-metadata: "npm:0.2.2"
@@ -4888,17 +4888,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"globals@npm:16.5.0":
+  version: 16.5.0
+  resolution: "globals@npm:16.5.0"
+  checksum: 10c0/615241dae7851c8012f5aa0223005b1ed6607713d6813de0741768bd4ddc39353117648f1a7086b4b0fa45eae733f1c0a0fe369aa4e543bb63f8de8990178ea9
+  languageName: node
+  linkType: hard
+
 "globals@npm:^14.0.0":
   version: 14.0.0
   resolution: "globals@npm:14.0.0"
   checksum: 10c0/b96ff42620c9231ad468d4c58ff42afee7777ee1c963013ff8aabe095a451d0ceeb8dcd8ef4cbd64d2538cef45f787a78ba3a9574f4a634438963e334471302d
-  languageName: node
-  linkType: hard
-
-"globals@npm:^16.5.0":
-  version: 16.5.0
-  resolution: "globals@npm:16.5.0"
-  checksum: 10c0/615241dae7851c8012f5aa0223005b1ed6607713d6813de0741768bd4ddc39353117648f1a7086b4b0fa45eae733f1c0a0fe369aa4e543bb63f8de8990178ea9
   languageName: node
   linkType: hard
 
@@ -5769,7 +5769,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest@npm:^29.7.0":
+"jest@npm:29.7.0":
   version: 29.7.0
   resolution: "jest@npm:29.7.0"
   dependencies:
@@ -7073,7 +7073,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:7.8.2, rxjs@npm:^7.8.2":
+"rxjs@npm:7.8.2":
   version: 7.8.2
   resolution: "rxjs@npm:7.8.2"
   dependencies:

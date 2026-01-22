@@ -9,7 +9,7 @@ export const grpcToHttpStatus: Record<RpcStatus, number> = {
   [RpcStatus.DEADLINE_EXCEEDED]: HttpStatus.GATEWAY_TIMEOUT,
   [RpcStatus.NOT_FOUND]: HttpStatus.NOT_FOUND,
   [RpcStatus.ALREADY_EXISTS]: HttpStatus.CONFLICT,
-  [RpcStatus.PERMISSION_DENIkED]: HttpStatus.FORBIDDEN,
+  [RpcStatus.PERMISSION_DENIED]: HttpStatus.FORBIDDEN,
   [RpcStatus.RESOURCE_EXHAUSTED]: HttpStatus.TOO_MANY_REQUESTS,
   [RpcStatus.FAILED_PRECONDITION]: HttpStatus.BAD_REQUEST,
   [RpcStatus.ABORTED]: HttpStatus.CONFLICT,
