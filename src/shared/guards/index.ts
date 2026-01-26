@@ -10,19 +10,26 @@ export class AuthGuard implements CanActivate {
   public constructor(private readonly passportService: PassportService) {}
 
   public canActivate(context: ExecutionContext): boolean {
-    const request = context.switchToHttp().getRequest<Request>();
-    const token = this.extractToken(request);
-    const result = this.passportService.verify(token);
-    const { valid, userId } = result;
+    try {
+      const request = context.switchToHttp().getRequest<Request>();
+      const token = this.extractToken(request);
+      const result = this.passportService.verify(token);
+      const { valid, userId } = result;
 
-    if (!valid) throw new UnauthorizedException(result.reason);
+      console.log(">> result", result);
 
-    // @ts-expect-error
-    request.user = {
-      id: userId,
-    };
+      if (!valid) throw new UnauthorizedException(result.reason);
 
-    return true;
+      // @ts-expect-error
+      request.user = {
+        id: userId,
+      };
+
+      return true;
+    } catch (exception) {
+      console.log(">> execution failed", exception);
+      return false;
+    }
   }
 
   private extractToken(request: Request): string {

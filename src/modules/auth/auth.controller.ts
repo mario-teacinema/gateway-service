@@ -1,20 +1,23 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
   Req,
   Res,
+  UseGuards,
 } from "@nestjs/common";
 import { SendOtpRequest } from "./dto";
-import { ApiOperation } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
 import { AuthClientGrpc } from "./auth.grpc";
 import { VerifyOtpRequest } from "./dto/requests/verify-otp.request";
 import { Response } from "express";
 import { lastValueFrom } from "rxjs";
 import { ConfigService } from "@nestjs/config";
 import { Request } from "express";
+import { AuthGuard } from "../../shared/guards";
 
 @Controller("auth")
 export class AuthController {
@@ -107,5 +110,12 @@ export class AuthController {
     });
 
     return { ok: true };
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard)
+  @Get("account")
+  public getAccount() {
+    return { message: "OK" };
   }
 }
