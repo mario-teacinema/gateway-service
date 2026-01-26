@@ -4,6 +4,7 @@ import {
   HttpCode,
   HttpStatus,
   Post,
+  Req,
   Res,
 } from "@nestjs/common";
 import { SendOtpRequest } from "./dto";
@@ -13,6 +14,7 @@ import { VerifyOtpRequest } from "./dto/requests/verify-otp.request";
 import { Response } from "express";
 import { lastValueFrom } from "rxjs";
 import { ConfigService } from "@nestjs/config";
+import { Request } from "express";
 
 @Controller("auth")
 export class AuthController {
@@ -58,5 +60,52 @@ export class AuthController {
     });
 
     return { accessToken };
+  }
+
+  @ApiOperation({
+    summary: "Logout",
+    description: "Clears the refresh token cookie and logs the user out",
+  })
+  @Post("refresh")
+  @HttpCode(HttpStatus.OK)
+  public async refresh(
+    @Req() request: Request,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const refreshToken = (request.cookies["refreshToken"] ?? "") as string;
+
+    const { accessToken, refreshToken: newRefreshToken } = await lastValueFrom(
+      this.client.refresh({ refreshToken }),
+    );
+
+    response.cookie("refreshToken", newRefreshToken, {
+      httpOnly: true,
+      secure:
+        this.configService.getOrThrow<string>("NODE_ENV") === "production",
+      domain: this.configService.get<string>("COOKIES_DOMAIN"),
+      sameSite: "lax",
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    });
+
+    return { accessToken };
+  }
+
+  @ApiOperation({
+    summary: "Logout",
+    description: "Remove token from cookies",
+  })
+  @Post("logout")
+  @HttpCode(HttpStatus.OK)
+  public async logout(@Res({ passthrough: true }) response: Response) {
+    response.cookie("refreshToken", "", {
+      httpOnly: true,
+      secure:
+        this.configService.getOrThrow<string>("NODE_ENV") === "production",
+      domain: this.configService.get<string>("COOKIES_DOMAIN"),
+      sameSite: "lax",
+      expires: new Date(0),
+    });
+
+    return { ok: true };
   }
 }
