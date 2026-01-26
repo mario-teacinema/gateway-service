@@ -1,14 +1,20 @@
 import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { ConfigModule } from "@nestjs/config";
+import { ConfigModule, ConfigService } from "@nestjs/config";
 import { AuthModule } from "../modules/auth";
+import { PassportModule } from "@mario-teacinema/passport";
+import { passportConfigLoader } from "./config";
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: [".env"],
+    }),
+    PassportModule.registerAsync({
+      useFactory: passportConfigLoader,
+      inject: [ConfigService],
     }),
     AuthModule,
   ],
