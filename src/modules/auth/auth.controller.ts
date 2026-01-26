@@ -7,7 +7,6 @@ import {
   Post,
   Req,
   Res,
-  UseGuards,
 } from "@nestjs/common";
 import { SendOtpRequest } from "./dto";
 import { ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
@@ -17,7 +16,7 @@ import { Response } from "express";
 import { lastValueFrom } from "rxjs";
 import { ConfigService } from "@nestjs/config";
 import { Request } from "express";
-import { AuthGuard } from "../../shared/guards";
+import { Protected } from "../../shared/decorators";
 
 @Controller("auth")
 export class AuthController {
@@ -113,7 +112,7 @@ export class AuthController {
   }
 
   @ApiBearerAuth()
-  @UseGuards(AuthGuard)
+  @Protected()
   @Get("account")
   public getAccount() {
     return { message: "OK" };
