@@ -16,7 +16,7 @@ import { Response } from "express";
 import { lastValueFrom } from "rxjs";
 import { ConfigService } from "@nestjs/config";
 import { Request } from "express";
-import { Protected } from "../../shared/decorators";
+import { CurrentUserDecorator, Protected } from "../../shared/decorators";
 
 @Controller("auth")
 export class AuthController {
@@ -114,7 +114,7 @@ export class AuthController {
   @ApiBearerAuth()
   @Protected()
   @Get("account")
-  public getAccount() {
-    return { message: "OK" };
+  public getAccount(@CurrentUserDecorator() userId: string | null) {
+    return { id: userId };
   }
 }
