@@ -25,4 +25,4 @@ import { AccountClientGrpc } from "./account.grpc";
   providers: [AccountClientGrpc],
   exports: [AccountClientGrpc],
 })
-export class AuthModule {}
+export class AccountModule {}

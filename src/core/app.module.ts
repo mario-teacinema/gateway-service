@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { AuthModule } from "../modules/auth";
+import { AccountModule, AuthModule } from "../modules";
 import { PassportModule } from "@mario-teacinema/passport";
 import { passportConfigLoader } from "./config";
 
@@ -17,6 +17,7 @@ import { passportConfigLoader } from "./config";
       inject: [ConfigService],
     }),
     AuthModule,
+    AccountModule,
   ],
   controllers: [AppController],
   providers: [AppService],
