@@ -4,6 +4,7 @@ import { ClientsModule, Transport } from "@nestjs/microservices";
 import { ConfigService } from "@nestjs/config";
 import { AuthClientGrpc } from "./auth.grpc";
 import { PROTO_PATHS } from "@mario-teacinema/contracts";
+import { AccountModule } from "../account";
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { PROTO_PATHS } from "@mario-teacinema/contracts";
         inject: [ConfigService],
       },
     ]),
+    AccountModule,
   ],
   controllers: [AuthController],
   providers: [AuthClientGrpc],

@@ -1,7 +1,6 @@
 import {
   Body,
   Controller,
-  Get,
   HttpCode,
   HttpStatus,
   Post,
@@ -9,14 +8,12 @@ import {
   Res,
 } from "@nestjs/common";
 import { SendOtpRequest } from "./dto";
-import { ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
+import { ApiOperation } from "@nestjs/swagger";
 import { AuthClientGrpc } from "./auth.grpc";
 import { VerifyOtpRequest } from "./dto/requests/verify-otp.request";
-import { Response } from "express";
+import { Request, Response } from "express";
 import { lastValueFrom } from "rxjs";
 import { ConfigService } from "@nestjs/config";
-import { Request } from "express";
-import { CurrentUserDecorator, Protected } from "../../shared/decorators";
 
 @Controller("auth")
 export class AuthController {
@@ -109,12 +106,5 @@ export class AuthController {
     });
 
     return { ok: true };
-  }
-
-  @ApiBearerAuth()
-  @Protected()
-  @Get("account")
-  public getAccount(@CurrentUserDecorator() userId: string | null) {
-    return { id: userId };
   }
 }
