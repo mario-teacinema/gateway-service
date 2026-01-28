@@ -1,10 +1,20 @@
 import { Inject, Injectable, OnModuleInit } from "@nestjs/common";
 
-import { AccountServiceClient } from "@mario-teacinema/contracts/gen/account";
+import {
+  AccountServiceClient,
+  ConfirmEmailChangeRequest,
+  ConfirmEmailChangeResponse,
+  ConfirmPhoneChangeRequest,
+  ConfirmPhoneChangeResponse,
+  GetAccountRequest,
+  GetAccountResponse,
+  InitEmailChangeRequest,
+  InitEmailChangeResponse,
+  InitPhoneChangeRequest,
+  InitPhoneChangeResponse,
+} from "@mario-teacinema/contracts/gen/account";
 import type { ClientGrpc } from "@nestjs/microservices";
-import { GetAccountRequest } from "@mario-teacinema/contracts/gen/account";
 import { Observable } from "rxjs";
-import { GetAccountResponse } from "@mario-teacinema/contracts/gen/account";
 
 @Injectable()
 export class AccountClientGrpc implements OnModuleInit {
@@ -23,5 +33,29 @@ export class AccountClientGrpc implements OnModuleInit {
     request: GetAccountRequest,
   ): Observable<GetAccountResponse> {
     return this.accountService.getAccount(request);
+  }
+
+  public initEmailChange(
+    request: InitEmailChangeRequest,
+  ): Observable<InitEmailChangeResponse> {
+    return this.accountService.initEmailChange(request);
+  }
+
+  public confirmEmailChange(
+    request: ConfirmEmailChangeRequest,
+  ): Observable<ConfirmEmailChangeResponse> {
+    return this.accountService.confirmEmailChange(request);
+  }
+
+  public initPhoneChange(
+    request: InitPhoneChangeRequest,
+  ): Observable<InitPhoneChangeResponse> {
+    return this.accountService.initPhoneChange(request);
+  }
+
+  public confirmPhoneChange(
+    request: ConfirmPhoneChangeRequest,
+  ): Observable<ConfirmPhoneChangeResponse> {
+    return this.accountService.confirmPhoneChange(request);
   }
 }
