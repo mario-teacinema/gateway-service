@@ -31,4 +31,12 @@ export class AuthClientGrpc implements OnModuleInit {
   public refresh(request: RefreshRequest) {
     return this.authService.refresh(request);
   }
+
+  public telegramInit() {
+    return this.authService.telegramInit({});
+  }
+
+  public async telegramVerify() {
+    return Promise.resolve();
+  }
 }

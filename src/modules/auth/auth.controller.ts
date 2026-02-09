@@ -1,13 +1,14 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
   Req,
   Res,
 } from "@nestjs/common";
-import { SendOtpRequest } from "./dto";
+import { SendOtpRequest, TelegramVerifyRequest } from "./dto";
 import { ApiOperation } from "@nestjs/swagger";
 import { AuthClientGrpc } from "./auth.grpc";
 import { VerifyOtpRequest } from "./dto/requests/verify-otp.request";
@@ -106,5 +107,19 @@ export class AuthController {
     });
 
     return { ok: true };
+  }
+
+  @Get("telegram")
+  @HttpCode(HttpStatus.OK)
+  public async telegramInit() {
+    return this.client.telegramInit();
+  }
+
+  @Post("telegram/verify")
+  @HttpCode(HttpStatus.OK)
+  public async telegramVerify(@Body() dto: TelegramVerifyRequest) {
+    const query = JSON.parse(atob(dto.tgAuthResult));
+    console.log(">> query", query);
+    return this.client.telegramInit();
   }
 }

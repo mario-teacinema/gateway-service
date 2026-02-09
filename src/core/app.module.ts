@@ -6,8 +6,11 @@ import { AccountModule, AuthModule } from "../modules";
 import { PassportModule } from "@mario-teacinema/passport";
 import { passportConfigLoader } from "./config";
 
+import { PrometheusModule } from "@willsoto/nestjs-prometheus";
+
 @Module({
   imports: [
+    PrometheusModule.register(),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: [".env"],
